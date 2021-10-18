@@ -1,11 +1,11 @@
 <template>
     <div class="item">
-        <input type="chechbox" 
+        <input type="checkbox" 
             @change="updateCheck()"
             v-model="item.completed"
         />
         <span :class="[item.completed ? 'completed':'','itemText']"> {{ item.name }} </span>
-        <button @click="removeItem()" class="trashcan"></button>
+        <button @click="removeItem()" class="trashcan">X</button>
     </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
     props:['item'],
     methods: {
         updateCheck(){
-            axios('/api/item' +this.item.id, {
+            axios.put('api/item/' +this.item.id, {
                 item: this.item
             })
             .then(response=> {
@@ -28,7 +28,7 @@ export default {
             
         },
         removeItem(){
-            axios.delete('/api/item' + this.item.id)
+            axios.delete('api/item/' + this.item.id)
             .then(response =>{
                 if(response.status == 200){
                     this.$emit('itemchanged');

@@ -4,6 +4,9 @@
         <input type="submit" value="+" :class="[item.name ? 'active': 'inactive', 'plus']" 
         @click="addItem()"
         />
+        <font-awesome-icon 
+            icon="plus-squre"
+        />
         
     </div>
 </template>
@@ -59,7 +62,14 @@ export default {
         width: 100%;
     }
     .active {
-        background: #20e441;
         color:#ffffff;
+        background:#00ce25;
+        border: #00ce25;
+    }
+
+    .inactive {
+        color: #FFFFFF;
+        background: #999999;
+        border: #999999;
     }
 </style>

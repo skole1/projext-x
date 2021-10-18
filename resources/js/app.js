@@ -1,10 +1,13 @@
 require('./bootstrap');
 
-import { createApp } from 'vue'
-import App from './vue/app.vue'
+require('alpinejs');
 
+import {createApp } from 'vue'
+import router from './router'
+import CompaniesIndex from './components/companies/CompaniesIndex'
 
-export const eventBus = createApp(App)
-
-createApp(App).mount('#app')
-
+createApp({
+    components:{
+        CompaniesIndex
+    }
+}).use(router).mount('#app');
